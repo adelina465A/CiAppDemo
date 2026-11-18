@@ -5,7 +5,7 @@ platform :android do
   lane :distribute do
     firebase_app_distribution(
       app: ENV.fetch("FIREBASE_APP_ID", "1:000000000000:android:REPLACE_ME"),
-      service_credentials__json_data: ENV["FIREBASE_SERVICE_ACCOUNT"],
+      service_credentials_file: "firebase_credentials.json",
       groups: "qa-team, beta-testers",
       android_artifact_type: "AAB",
       release_notes: "Сборка #{ENV['GITHUB_RUN_NUMBER'] || 'local'}"
