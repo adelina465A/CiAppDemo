@@ -13,14 +13,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
           cache: gradle
 
       - name: Cache Gradle packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
@@ -46,12 +46,12 @@ jobs:
         run: ./gradlew bundleRelease --no-daemon
 
       - name: Upload Artifact (AAB)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app-release-aab
           path: app/build/outputs/bundle/release/app-release.aab
 
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v4
         with:
           ruby-version: '3.2'
           bundler-cache: true
